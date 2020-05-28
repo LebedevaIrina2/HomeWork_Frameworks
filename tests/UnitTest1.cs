@@ -91,7 +91,8 @@ namespace PageObjects
 
             LoginService.Autorization(loginValue, driver); // Авторизация           
 
-            deleteNewProduct.RemoveProducts (product.SendKeysProductName);                        
+            deleteNewProduct.RemoveProducts (product.SendKeysProductName);     // Удаляем продукт
+            Assert.AreEqual(false, deleteNewProduct.isElementPresent(product.SendKeysProductName)); // Проверка успешного удаления продукта 
         }
 
 
@@ -103,7 +104,7 @@ namespace PageObjects
             LoginService.Autorization(loginValue, driver); // Авторизация
 
             login.Logout(); //LOGOUT
-            Assert.AreEqual(namePage.NameLoginPage, login.PageAutorization());// Проверка успешного выхода из аккаунта, т.е. должны оказаться на странице "Login";
+            Assert.AreEqual(namePage.NameLoginPage, login.PageAutorization());// Проверка успешного выхода из аккаунта, т.е. мы должны оказаться на странице "Login";
 
             LoginService.Autorization(loginValue, driver); // Авторизация
         }

@@ -29,5 +29,17 @@ namespace PageObjects
 
         }
 
+        public Boolean isElementPresent(string ProductName)
+        {
+            try
+            {
+                return driver.FindElement(By.XPath($"//a[text()=\"{ProductName}\"]")).Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
     }
 }
